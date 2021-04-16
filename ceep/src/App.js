@@ -20,7 +20,16 @@ class App extends Component {
     const novoArrayNotas = [...this.state.notas, novaNota]; //desconstroi o vetor antigo e adicionada uma nova nota
     const novoEstado = {
       notas:novoArrayNotas //recebe o vetor com a nova nota
-    }
+    };
+    this.setState(novoEstado);
+  }
+
+  apagarNota(index){
+    let arrayNotas = this.state.notas;
+    arrayNotas.splice(index,1);
+    const novoEstado = {
+      notas:arrayNotas
+    };
     this.setState(novoEstado);
   }
 
@@ -28,7 +37,10 @@ class App extends Component {
     return (
       <section className="conteudo">
         <Formulario criarNota={this.criarNota.bind(this)}/>
-        <ListaDeNotas notas={this.state.notas}/>
+        <ListaDeNotas 
+        apagarNota={this.apagarNota.bind(this)}
+        notas={this.state.notas}
+        />
       </section>
     );
   }
