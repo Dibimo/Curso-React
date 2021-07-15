@@ -14,10 +14,11 @@ class App extends Component {
     };
   }
 
-  criarNota(titulo,texto){
+  criarNota(titulo,texto, categoria){
     const novaNota = {
       titulo,
-      texto
+      texto,
+      categoria,
     };
     const novoArrayNotas = [...this.state.notas, novaNota]; //desconstroi o vetor antigo e adicionada uma nova nota
     const novoEstado = {
