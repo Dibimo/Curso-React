@@ -8,42 +8,10 @@ class App extends Component {
 
   constructor(){
     super();
-    this.state = {
-      notas: [],
-      categorias: [],
-    };
+    
   }
 
-  criarNota(titulo,texto, categoria){
-    const novaNota = {
-      titulo,
-      texto,
-      categoria,
-    };
-    const novoArrayNotas = [...this.state.notas, novaNota]; //desconstroi o vetor antigo e adicionada uma nova nota
-    const novoEstado = {
-      notas:novoArrayNotas //recebe o vetor com a nova nota
-    };
-    this.setState(novoEstado);
-  }
-
-  apagarNota(index){
-    let arrayNotas = this.state.notas;
-    arrayNotas.splice(index,1); //outra forma de adicionar elementos
-    const novoEstado = {
-      notas:arrayNotas
-    };
-    this.setState(novoEstado);
-  }
-
-  adicionarCategoria(nomeCategoria){
-    let categoriasVetorNovo = this.state.categorias; //recebendo categorias antigas do vetor
-    categoriasVetorNovo.push(nomeCategoria); //adiciona nova categoria ao vetor
-    const novoEstado = {
-      categorias: categoriasVetorNovo
-    }
-    this.setState(novoEstado);
-  }
+  
 
   render(){
     return (
