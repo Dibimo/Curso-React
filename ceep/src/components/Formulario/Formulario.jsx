@@ -6,6 +6,15 @@ class Formulario extends Component {
     this.titulo = "";
     this.texto = "";
     this.categoria = "Geral";
+    this.state = {categorias: []}
+  }
+
+  componentDidMount() {
+    this.props.categorias.inscrever(this._novasCategorias.bind(this));
+  }
+
+  _novasCategorias(categorias){
+    this.setState({...this.state,categorias});
   }
 
   _handlerMudancaTitulo(evento) {
@@ -17,10 +26,10 @@ class Formulario extends Component {
     evento.stopPropagation();
     this.texto = evento.target.value;
   }
-  
-  _handlerMudancaCategoria(evento){
+
+  _handlerMudancaCategoria(evento) {
     evento.stopPropagation();
-    this.categoria = evento.target.value
+    this.categoria = evento.target.value;
   }
 
   _criarNota(evento) {
@@ -39,12 +48,12 @@ class Formulario extends Component {
           className="form-cadastro_input"
           onChange={this._handlerMudancaTitulo.bind(this)}
         />
-        <select 
+        <select
           className="form-cadastro_input"
           onChange={this._handlerMudancaCategoria.bind(this)}
         >
           <option value="geral">Geral</option>
-          {this.props.categorias.map((categoria, index) => {
+          {this.state.categorias.map((categoria, index) => {
             return (
               <option key={index} value={categoria.toLowerCase()}>
                 {categoria}

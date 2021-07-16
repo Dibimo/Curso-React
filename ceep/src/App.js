@@ -3,12 +3,15 @@ import  Formulario  from './components/Formulario/index';
 import ListaDeNotas from "./components/ListaDeNotas/index"
 import ListaDeCategorias from './components/ListaDeCategorias/ListaDeCategorias';
 import './assets/App.css';
+import Categorias from './dados/Categorias';
+import ArrayDeNotas from './dados/ArrayDeNotas';
 
 class App extends Component {
 
   constructor(){
     super();
-    
+    this.categorias = new Categorias();
+    this.notas = new ArrayDeNotas();
   }
 
   
@@ -17,17 +20,17 @@ class App extends Component {
     return (
       <section className="conteudo">
         <Formulario 
-        criarNota={this.criarNota.bind(this)}
-        categorias = {this.state.categorias}
+        criarNota={this.notas.adicionarNota.bind(this.notas)}
+        categorias = {this.categorias}
         />
         <main className="conteudo-principal">
           <ListaDeCategorias 
-          adicionarCategoria={this.adicionarCategoria.bind(this)} 
-          categorias={this.state.categorias} 
+          adicionarCategoria={this.categorias.adicionarCategoria.bind(this.categorias)} 
+          categorias={this.categorias} 
           />
           <ListaDeNotas 
-          apagarNota={this.apagarNota.bind(this)}
-          notas={this.state.notas}
+          apagarNota={this.notas.apagarNota.bind(this.notas)}
+          notas={this.notas}
           />
 
         </main>
