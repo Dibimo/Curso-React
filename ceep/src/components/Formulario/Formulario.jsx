@@ -13,6 +13,10 @@ class Formulario extends Component {
     this.props.categorias.inscrever(this._novasCategorias.bind(this));
   }
 
+  componentWillUnmount(){ //executa quando o componente é deletado por inteiro
+    this.props.categorias.desinscrever(this._novasCategorias.bind(this));
+  }
+
   _novasCategorias(categorias){
     this.setState({...this.state,categorias});
   }
